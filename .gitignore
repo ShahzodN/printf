@@ -1,0 +1,5 @@
+libft/
+*.out
+Makefile
+main.c
+.vscode
