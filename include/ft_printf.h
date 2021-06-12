@@ -19,6 +19,7 @@ typedef struct	s_specs
 int		ft_printf(const char *fmt, ...);
 void	parse(const char *fmt, int *length, va_list args);
 void	make_str(t_specs *specs, int *length, va_list args);
+void	start_print(t_specs *specs, char *con_int, int dig_count);
 void	d_handler(t_specs *specs, int *length, va_list args);
 void	s_handler(t_specs *specs, int *length, va_list args);
 void	c_handler(t_specs *specs, int *length, va_list args);

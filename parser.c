@@ -15,7 +15,10 @@ void	set_precision(t_specs *specs, const char **fmt, va_list args)
 		specs->precision = 0;
 		(*fmt)++;
 		if (**fmt == '*')
+		{
 			specs->precision = va_arg(args, int);
+			(*fmt)++;
+		}
 		while (ft_isdigit(**fmt))
 		{
 			specs->precision = specs->precision * 10 + (**fmt - '0');
