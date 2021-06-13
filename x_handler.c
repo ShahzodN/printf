@@ -1,6 +1,6 @@
 #include "include/ft_printf.h"
 
-char	get_hex(unsigned int x, char c)
+char	int_to_hex(unsigned int x, char c)
 {
 	if (x > 9)
 	{
@@ -12,14 +12,14 @@ char	get_hex(unsigned int x, char c)
 	return ('0' + x);
 }
 
-void	recursion(unsigned int value, char arr[], char c, int *i)
+void	to_hex(unsigned long long n, char arr[], char type, int *i)
 {
-	if (value == 0)
+	if (n == 0)
 		return ;
 	else
 	{
-		recursion(value / 16, arr, c, i);
-		arr[*i] = get_hex(value % 16, c);
+		to_hex(n / 16, arr, type, i);
+		arr[*i] = int_to_hex(n % 16, type);
 		(*i)++;
 	}
 }
@@ -33,12 +33,12 @@ void	x_handler(t_specs *specs, int *length, va_list args)
 
 	i = 0;
 	value = va_arg(args, unsigned int);
-	recursion(value, arr, specs->type, &i);
+	to_hex(value, arr, specs->type, &i);
 	arr[i] = 0;
 	arr_len = (int)ft_strlen(arr);
 	if (specs->width > arr_len)
 		*length += specs->width;
 	else
 		*length += arr_len;
-	start_print(specs, arr, ft_strlen(arr));
+	start_print(specs, arr, arr_len);
 }
