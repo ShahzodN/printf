@@ -35,7 +35,7 @@ void	x_handler(t_specs *specs, int *length, va_list args)
 	value = va_arg(args, unsigned int);
 	recursion(value, arr, specs->type, &i);
 	arr[i] = 0;
-	arr_len = ft_strlen(arr);
+	arr_len = (int)ft_strlen(arr);
 	if (specs->width > arr_len)
 		*length += specs->width;
 	else
