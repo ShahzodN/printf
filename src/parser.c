@@ -1,4 +1,4 @@
-#include "include/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	set_type(t_specs *specs, const char **fmt, va_list args)
 {

@@ -1,4 +1,4 @@
-#include "include/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	make_str(t_specs *specs, int *length, va_list args)
 {

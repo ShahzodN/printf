@@ -1,4 +1,4 @@
-#include "include/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	only_precision(t_specs *specs, char *con_int, int dig_count)
 {

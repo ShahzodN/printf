@@ -1,6 +1,6 @@
-#include "include/ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int	only_width_s(t_specs *specs, char *str, int char_count, int *length)
+void	only_width_s(t_specs *specs, char *str, int char_count, int *length)
 {
 	int	spaces;
 
@@ -22,7 +22,7 @@ int	only_width_s(t_specs *specs, char *str, int char_count, int *length)
 	}
 }
 
-int	has_precision(t_specs *specs, char *str, int char_count, int *length)
+void	has_precision(t_specs *specs, char *str, int char_count, int *length)
 {
 	int	spaces;
 
@@ -54,7 +54,7 @@ void	s_handler(t_specs *specs, int *length, va_list args)
 	str = va_arg(args, char *);
 	if (str == NULL)
 	{
-		write(1, "null", 4);
+		write(1, "(null)", 6);
 		return ;
 	}
 	str_len = (int)ft_strlen(str);

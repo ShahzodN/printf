@@ -1,14 +1,13 @@
-
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
-#include "../libft/libft.h"
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdarg.h>
+# define FT_PRINTF_H
+# include "../libft/libft.h"
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <stdarg.h>
 
-typedef struct	s_specs
+typedef struct s_specs
 {
 	char	flag;
 	int		width;
