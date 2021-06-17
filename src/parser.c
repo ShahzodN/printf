@@ -34,6 +34,11 @@ void	set_width(t_specs *specs, const char **fmt, va_list args)
 	if (**fmt == '*')
 	{
 		specs->width = va_arg(args, int);
+		if (specs->width < 0)
+		{
+			specs->flag = '-';
+			specs->width *= -1;
+		}
 		(*fmt)++;
 	}
 	else

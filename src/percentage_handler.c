@@ -1,9 +1,13 @@
 #include "../includes/ft_printf.h"
 
-void	has_width_perc(t_specs *specs)
+void	percentage_handler(t_specs *specs, int *length)
 {
-	int	spaces;
 
+	int		spaces;
+	char	*str;
+
+	str = "%";
+	*length += 1;
 	spaces = specs->width - 1;
 	if (specs->flag == '-')
 		minus_flag(0, spaces, "%");
@@ -15,17 +19,4 @@ void	has_width_perc(t_specs *specs)
 			write(1, " ", 1);
 		write(1, "%", 1);
 	}
-}
-
-void	percentage_handler(t_specs *specs, int *length)
-{
-	char	*str;
-
-	str = "%";
-	if (specs->width > 1)
-	{
-		*length += specs->width;
-		has_width_perc(specs);
-	}
-	
 }

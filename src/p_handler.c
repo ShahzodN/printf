@@ -8,6 +8,7 @@ void	p_handler(t_specs *specs, int *length, va_list args)
 	int					arr_len;
 
 	p_address = va_arg(args, unsigned long long);
+	specs->precision = -1;
 	arr[0] = '0';
 	arr[1] = 'x';
 	i = 2;

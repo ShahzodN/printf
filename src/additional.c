@@ -18,7 +18,7 @@ void	zero_flag(int zero_count, char *con_int)
 {
 	if (*con_int == '-')
 		write(1, con_int++, 1);
-	while (zero_count--)
+	while (zero_count-- > 0)
 		write(1, "0", 1);
 	while (*con_int)
 		write(1, con_int++, 1);
@@ -28,10 +28,10 @@ void	minus_flag(int zero_count, int spaces, char *con_int)
 {
 	if (*con_int == '-' && con_int++)
 		write(1, "-", 1);
-	while (zero_count--)
+	while (zero_count-- > 0)
 		write(1, "0", 1);
 	while (*con_int)
 		write(1, con_int++, 1);
-	while (spaces--)
+	while (spaces-- > 0)
 		write(1, " ", 1);
 }

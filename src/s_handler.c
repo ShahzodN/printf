@@ -53,11 +53,7 @@ void	s_handler(t_specs *specs, int *length, va_list args)
 
 	str = va_arg(args, char *);
 	if (str == NULL)
-	{
 		str = "(null)";
-		// write(1, "(null)", 6);
-		// return ;
-	}
 	str_len = (int)ft_strlen(str);
 	if (specs->precision < str_len && specs->precision > -1)
 		has_precision(specs, str, specs->precision, length);

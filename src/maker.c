@@ -14,4 +14,6 @@ void	make_str(t_specs *specs, int *length, va_list args)
 		x_handler(specs, length, args);
 	else if (specs->type == 'c')
 		c_handler(specs, length, args);
+	else if (specs->type == '%')
+		percentage_handler(specs, length);
 }
