@@ -24,7 +24,7 @@ void	only_width(t_specs *specs, char *con_int, int dig_count)
 	zero_count = specs->width - dig_count;
 	if (specs->flag == '-')
 		minus_flag(0, spaces, con_int);
-	else if (specs->flag == '0')
+	else if (specs->flag == '0' && specs->precision == -1)
 		zero_flag(zero_count, con_int);
 	else
 	{
