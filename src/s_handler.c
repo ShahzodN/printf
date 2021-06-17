@@ -54,8 +54,9 @@ void	s_handler(t_specs *specs, int *length, va_list args)
 	str = va_arg(args, char *);
 	if (str == NULL)
 	{
-		write(1, "(null)", 6);
-		return ;
+		str = "(null)";
+		// write(1, "(null)", 6);
+		// return ;
 	}
 	str_len = (int)ft_strlen(str);
 	if (specs->precision < str_len && specs->precision > -1)

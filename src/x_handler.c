@@ -33,7 +33,10 @@ void	x_handler(t_specs *specs, int *length, va_list args)
 
 	i = 0;
 	value = va_arg(args, unsigned int);
-	to_hex(value, arr, specs->type, &i);
+	if (value == 0)
+		arr[i++] = '0';
+	else
+		to_hex(value, arr, specs->type, &i);
 	arr[i] = 0;
 	arr_len = (int)ft_strlen(arr);
 	if (specs->width > arr_len)

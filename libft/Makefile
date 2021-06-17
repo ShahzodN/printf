@@ -4,6 +4,7 @@ SRCS		=	ft_isalnum.c ft_isprint.c ft_memcmp.c ft_strjoin.c ft_putstr_fd.c ft_ito
 				ft_tolower.c ft_bzero.c ft_isascii.c ft_memccpy.c ft_strmapi.c ft_strtrim.c \
 				ft_memmove.c  ft_strdup.c ft_strlen.c  ft_strrchr.c ft_putchar_fd.c \
 				ft_toupper.c ft_calloc.c ft_isdigit.c ft_memchr.c ft_memset.c
+
 OBJS		= $(SRCS:.c=.o)
 
 HEADER_FILE = libft.h
@@ -18,6 +19,7 @@ all: $(NAME)
 
 %.o: %.c $(HEADER_FILE)
 	gcc $(FLAGS) -c $< -o $@
+
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $?
 

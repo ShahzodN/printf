@@ -6,7 +6,8 @@ void	u_handler(t_specs *specs, int *length, va_list args)
 	int		max_len;
 	int		dig_count;
 
-	con_int = ft_itoa(va_arg(args, unsigned int));
+	unsigned int a = va_arg(args, unsigned int);
+	con_int = ft_itoa(a);
 	max_len = (int)ft_strlen(con_int);
 	dig_count = max_len;
 	if (specs->width > max_len || specs->precision > max_len)

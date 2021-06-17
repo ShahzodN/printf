@@ -1,6 +1,6 @@
 #include "../includes/ft_printf.h"
 
-void	set_type(t_specs *specs, const char **fmt, va_list args)
+void	set_type(t_specs *specs, const char **fmt)
 {
 	if (**fmt)
 		specs->type = **fmt;
@@ -25,7 +25,7 @@ void	set_precision(t_specs *specs, const char **fmt, va_list args)
 			(*fmt)++;
 		}
 	}
-	set_type(specs, fmt, args);
+	set_type(specs, fmt);
 }
 
 void	set_width(t_specs *specs, const char **fmt, va_list args)

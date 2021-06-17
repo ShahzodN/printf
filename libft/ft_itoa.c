@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-static void	set(long long *n, int nbr, int *digits_count)
+static void	set(long long *n, long long nbr, int *digits_count)
 {
-	unsigned int	b;
+	long long	b;
 
 	*digits_count = 0;
 	*n = nbr;
@@ -31,7 +31,7 @@ static void	set(long long *n, int nbr, int *digits_count)
 	}
 }
 
-char	*ft_itoa(int nbr)
+char	*ft_itoa(long long nbr)
 {
 	char		*final_res;
 	long long	n;

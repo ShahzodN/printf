@@ -1,10 +1,14 @@
 #include "../includes/ft_printf.h"
 
-void	only_precision(t_specs *specs, char *con_int, int dig_count)
+
+
+void	only_precision(t_specs *specs, char *con_int)
 {
 	int	zero_count;
 
-	zero_count = specs->precision - dig_count;
+	if (*con_int == '-')
+		write(1, con_int++, 1);
+	zero_count = specs->precision - get_dig_count(con_int);
 	while (zero_count--)
 		write(1, "0", 1);
 	while (*con_int)
@@ -14,49 +18,38 @@ void	only_precision(t_specs *specs, char *con_int, int dig_count)
 void	only_width(t_specs *specs, char *con_int, int dig_count)
 {
 	int		spaces;
-	char	c;
-
-	if (specs->flag == '0')
-		c = '0';
-	else if (specs->flag != '-')
-		c = ' ';
+	int		zero_count;
+	
 	spaces = specs->width - dig_count;
+	zero_count = specs->width - dig_count;
 	if (specs->flag == '-')
-	{
-		while (*con_int)
-			write(1, con_int++, 1);
-		while (spaces--)
-			write(1, " ", 1);
-	}
+		minus_flag(0, spaces, con_int);
+	else if (specs->flag == '0')
+		zero_flag(zero_count, con_int);
 	else
 	{
 		while (spaces--)
-			write(1, &c, 1);
+			write(1, " ", 1);
 		while (*con_int)
 			write(1, con_int++, 1);
 	}
 }
 
-void	precision_in_width(t_specs *specs, char *con_int, int dig_count)
+void	precision_in_width(t_specs *specs, char *con_int)
 {
 	int	spaces;
 	int	zero_count;
 
-	spaces = specs->width - specs->precision;
-	zero_count = specs->precision - dig_count;
+	zero_count = specs->precision - get_dig_count(con_int);
+	spaces = specs->width - zero_count - ft_strlen(con_int);
 	if (specs->flag == '-')
-	{
-		while (zero_count--)
-			write(1, "0", 1);
-		while (*con_int)
-			write(1, con_int++, 1);
-		while (spaces--)
-			write(1, " ", 1);
-	}
+		minus_flag(zero_count, spaces, con_int)	;
 	else
 	{
 		while (spaces--)
 			write(1, " ", 1);
+		if (*con_int == '-')
+			write(1, con_int++, 1);
 		while (zero_count--)
 			write(1, "0", 1);
 		while (*con_int)
@@ -66,12 +59,14 @@ void	precision_in_width(t_specs *specs, char *con_int, int dig_count)
 
 void	start_print(t_specs *specs, char *con_int, int dig_count)
 {
+	if (specs->precision == 0 && *con_int == '0' && dig_count--)
+		con_int++;
 	if (specs->precision > dig_count)
 	{
 		if (specs->precision > specs->width)
-			only_precision(specs, con_int, dig_count);
+			only_precision(specs, con_int);
 		else
-			precision_in_width(specs, con_int, dig_count);
+			precision_in_width(specs, con_int);
 	}
 	else if (specs->width > dig_count)
 		only_width(specs, con_int, dig_count);
